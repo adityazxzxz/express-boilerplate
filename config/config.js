@@ -19,18 +19,19 @@ module.exports = {
         },
         "timezone": '+07:00',
     },
-    "test": {
-        "username": "root",
-        "password": null,
-        "database": "database_test",
-        "host": "127.0.0.1",
-        "dialect": "mysql",
+    "local": {
+        "username": process.env.LOCAL_DB_USERNAME || 'root',
+        "password": process.env.LOCAL_DB_PASSWORD || '',
+        "database": process.env.LOCAL_DB_NAME || 'mydb',
+        "host": process.env.LOCAL_DB_HOST || '127.0.0.1',
+        "port": process.env.LOCAL_DB_PORT || '3306',
+        "dialect": process.env.LOCAL_DB_DIALECT || "mysql",
         "logging": false,
         "pool": {
-            "max": 5,
-            "min": 0,
-            "acquire": 30000,
-            "idle": 10000
+            "max": process.env.LOCAL_DB_POOL_MAX || 5,
+            "min": process.env.LOCAL_DB_POOL_MIN || 0,
+            "acquire": process.env.LOCAL_DB_POOL_ACQUIRE || 30000,
+            "idle": process.env.LOCAL_DB_POOL_IDLE || 10000
         },
         "dialectOptions": {
             "timezone": '+07:00',
@@ -38,17 +39,18 @@ module.exports = {
         "timezone": '+07:00',
     },
     "production": {
-        "username": "root",
-        "password": null,
-        "database": "database_production",
-        "host": "127.0.0.1",
-        "dialect": "mysql",
+        "username": process.env.PROD_DB_USERNAME || 'root',
+        "password": process.env.PROD_DB_PASSWORD || '',
+        "database": process.env.PROD_DB_NAME || 'mydb',
+        "host": process.env.PROD_DB_HOST || '127.0.0.1',
+        "port": process.env.PROD_DB_PORT || '3306',
+        "dialect": process.env.PROD_DB_DIALECT || "mysql",
         "logging": false,
         "pool": {
-            "max": 5,
-            "min": 0,
-            "acquire": 30000,
-            "idle": 10000
+            "max": process.env.PROD_DB_POOL_MAX || 5,
+            "min": process.env.PROD_DB_POOL_MIN || 0,
+            "acquire": process.env.PROD_DB_POOL_ACQUIRE || 30000,
+            "idle": process.env.PROD_DB_POOL_IDLE || 10000
         },
         "dialectOptions": {
             "timezone": '+07:00',
